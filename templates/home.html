@@ -12,19 +12,27 @@
     href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" 
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="../style/home.css">
+  <link rel="stylesheet" href="style/home.css">
 </head>
 <body>
   <header>
     <nav class="navbar">
       <ul>
-        <li><a href="home.html">Home</a></li>
+        <li>
+          <form action="?command=home" method="post">
+            <button type="submit">Home</button>
+          </form>
+        </li>
         <li><a href="#">Hobbies</a></li>
         <li><a href="#">Friends</a></li>
         <li class="logo">HOBOTRACK</li>
         <li><a href="#">Search</a></li>
         <li><a href="#">Profile</a></li>
-        <li><a href="index.html">Logout</a></li>
+        <li>
+          <form action="?command=login" method="post">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
       </ul>
     </nav>
   </header>
@@ -36,7 +44,7 @@
       <div class="hobby-details">
         <div class="hobby-image">
           <div class="img-placeholder">
-            <img src="../movie.jpg" alt="Captain America Movie" width="175" height="175">
+            <img src="/opt/src/cs4640-final-project/movie.jpg" alt="Captain America Movie" width="175" height="175">
           </div>
         </div>
 

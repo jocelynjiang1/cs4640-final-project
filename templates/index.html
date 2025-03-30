@@ -12,16 +12,17 @@
   <link 
     href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" 
     rel="stylesheet">
-  <link rel="stylesheet" href="../style/styles.css">
+  <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
   <div class="container">
     <h1>Hobby Tracker (Name TBA)</h1>
     
-    <form class="login-form" action="home.html" method="GET">
+    <form action="?command=login" class="login-form" method="post">
       <input 
         type="email" 
         class="email-input" 
+        name="email"
         placeholder="mail@example.com" 
         required
       >
@@ -29,6 +30,7 @@
         <input 
           type="password" 
           class="password-input" 
+          name="password"
           placeholder="Password" 
           required
         >
