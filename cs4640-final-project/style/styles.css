@@ -1,0 +1,195 @@
+/* Author: Jennifer Liu */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Architects Daughter', cursive;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+    min-height: 100vh;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* formatting for inputs */
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+  }
+
+  .login-form input:focus {
+    outline: none;
+    border-color: #007BFF;
+  }
+  
+  .email-input, 
+  .password-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid #000;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .password-section {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .password-hint {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 0.25rem;
+    text-align: left;
+  }
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #000;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .signup-link {
+    font-size: 1rem;
+    text-decoration: underline;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  /* icons for the home page for decoration */
+
+  .floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+  }
+  
+  .icon {
+    position: absolute;
+    font-size: 2rem;
+  }
+  
+  .icon-gift {
+    top: 10%;
+    left: 5%;
+  }
+  
+  .icon-camera {
+    top: 20%;
+    right: 8%;
+  }
+  
+  .icon-globe {
+    top: 50%;
+    left: 3%;
+  }
+  
+  .icon-paint {
+    top: 80%;
+    right: 5%;
+  }
+  
+  .icon-alarm {
+    top: 70%;
+    left: 40%;
+  }
+  
+  .icon-smile {
+    top: 30%;
+    left: 80%;
+  }
+  
+  .icon-bookmark {
+    top: 40%;
+    right: 15%;
+  }
+  
+  .icon-tool {
+    top: 90%;
+    left: 50%;
+  }
+  
+  .icon-music {
+    top: 15%;
+    left: 15%;
+  }
+  
+  .icon-soccer {
+    top: 60%;
+    right: 10%;
+  }
+  
+  .icon-cook {
+    top: 85%;
+    left: 10%;
+  }
+  
+  .icon-book {
+    top: 35%;
+    right: 5%;
+  }
+  
+  .icon-plane {
+    top: 25%;
+    left: 75%;
+  }
+  
+  .icon-game {
+    top: 45%;
+    left: 30%;
+  }
+  
+  .icon-palette {
+    top: 75%;
+    right: 20%;
+  }
+  
+  .icon-run {
+    top: 55%;
+    left: 20%;
+  }
+
+  @media only screen and (max-width: 778px) { /*screen adjustment for login screen*/
+    .icon { /* make icons disappear on smaller screen width--get in the way*/
+        display:none;
+    }
+    .category { /*expand container vertically*/
+        height:100%;
+    }
+}
+  
