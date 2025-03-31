@@ -16,25 +16,36 @@
 
 <body>
     <header>
-        <nav class="navbar">
-            <ul>
-              <li><a href="home.html">Home</a></li>
-              <li><a href="#">Hobbies</a></li>
-              <li><a href="#">Friends</a></li>
-              <li class="logo">HOBOTRACK</li>
-              <li><a href="#">Search</a></li>
-              <li><a href="#">Tracker</a></li>
-              <li><a href="#">Profile</a></li>
-            </ul>
-          </nav>
+    <nav class="navbar">
+      <ul>
+        <li>
+          <form action="?command=home" method="post">
+            <button type="submit">Home</button>
+          </form>
+        </li>
+        <li><a href="#">Hobbies</a></li>
+        <li><a href="#">Friends</a></li>
+        <li class="logo">HOBOTRACK</li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Profile</a></li>
+        <li>
+          <form action="?command=login" method="post">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
     </header>
     <main>
         <section class="category">
             <div class="title-friends-row row">
-                <h2 class="col-9">Reading</h2>
+                <h2 class="col-9"><?=$hobby_name?></h2>
                 <button class="card find-friends">👥 Find friends!</button>
             </div>
-            <div class="current-read">
+            <div class="hobby-description">
+                <p><?=$hobby_description?></p>
+            </div>
+            <!-- <div class="current-read">
                 I am currently reading... The Cat in the Hat
             </div>
 
@@ -55,7 +66,7 @@
                         <li>09/25/2024</li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <form class="new-entry-form" action="example_hobby.html">
                 <label class="add-entry" for="add-entry">Add a new entry:</label>

@@ -18,17 +18,25 @@
 
 <body>
     <header>
-        <nav class="navbar">
-            <ul>
-              <li><a href="home.html">Home</a></li>
-              <li><a href="#">Hobbies</a></li>
-              <li><a href="#">Friends</a></li>
-              <li class="logo">HOBOTRACK</li>
-              <li><a href="#">Search</a></li>
-              <li><a href="#">Tracker</a></li>
-              <li><a href="#">Profile</a></li>
-            </ul>
-          </nav>
+    <nav class="navbar">
+      <ul>
+        <li>
+          <form action="?command=home" method="post">
+            <button type="submit">Home</button>
+          </form>
+        </li>
+        <li><a href="#">Hobbies</a></li>
+        <li><a href="#">Friends</a></li>
+        <li class="logo">HOBOTRACK</li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Profile</a></li>
+        <li>
+          <form action="?command=login" method="post">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
     </header>
     <main>
         <section class="category">

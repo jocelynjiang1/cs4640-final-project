@@ -38,8 +38,8 @@ class HobbyController {
       case "home":
         $this->home();
         break;
-      case "example_hobby":
-        $this->example_hobby();
+      case "hobby_page":
+        $this->hobby_page();
         break;
       case "showAddHobby":
         $this->showAddHobby();
@@ -158,8 +158,12 @@ class HobbyController {
     $this->showAddHobby($message);
   }
 
-  public function example_hobby(){
-    include("/opt/src/cs4640-final-project/templates/example_hobby.php");
+  public function hobby_page(){
+    $hobby_id = $_POST["hobby_id"];
+    $hobby_info = $this->db->query("select hobby_name, hobby_description from hobbies where id = $1;",$hobby_id);
+    $hobby_name = $hobby_info[0]["hobby_name"];
+    $hobby_description = $hobby_info[0]["hobby_description"];
+    include("/opt/src/cs4640-final-project/templates/hobby_page.php");
   }
 
     /**

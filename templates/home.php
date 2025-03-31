@@ -103,8 +103,10 @@
             $hobby = $hobbies[$i];
             $hobby_name = $hobby["hobby_name"];
             $hobby_description = $hobby["hobby_description"];
+            $hobby_id = $hobby["id"];
             echo 
-            "<form action='?command=example_hobby' method='post'>
+            "<form action='?command=hobby_page' method='post'>
+              <input type='hidden' name='hobby_id' value='$hobby_id'>
               <button type='submit'>
                 <div class='card add-hobby-card'>
                 <h3>$hobby_name</h3>
