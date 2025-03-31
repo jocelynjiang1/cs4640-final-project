@@ -33,19 +33,17 @@
     <main>
         <section class="category">
             <h2>Add a new hobby to your profile!</h2>
-            <form action="home.html" method="post">
+            <form action="?command=createHobby" method="post">
                 <label for="category-name" class="category-name">New category name:</label>
-                <input type="text" id="category-name"> <br>
+                <input type="text" id="category-name" name="hobby-name"> <br>
                 <label for="category-description" class="category-description">Category description (optional):</label>
-                <input type="text" id="category-description"> <br>
-                <input type="checkbox" id="attribute-checkbox">
-                <label for="attribute-checkbox">Add category attributes?</label> 
-                <p>Category attributes are like subcategories. For example, if you created a "Favorite Restaurants" category, you might add a "Cuisine" attribute to further describe your new restaurant entry. </p>
-                <label for="add-attribute" class="add-attribute">Add a category attribute:</label>
-                <input type="text" id="add-attribute" placeholder="E.g., cuisine"> <br>
+                <input type="text" id="category-description" name="hobby-description"> <br>
                 <button type="submit" name="submit-category" class="submit-category">Create category!</button>
             </form>
+            <br>
+            <?=$message?>
         </section>
+        
     </main>
 
     <div class="new-hobby-icons">

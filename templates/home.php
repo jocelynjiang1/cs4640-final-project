@@ -75,12 +75,14 @@
       </p>
 
       <div class="hobby-cards">  
-        <a href="example_hobby.html">
+        <!-- <form action="?command=example_hobby" method="post">
+          <button type="submit">
             <div class="card reading-hobby">
-                <h3>Reading</h3>
-                <p>I recently just read Mistborn by Brandon Sanderson!</p>
-            </div>
-        </a>
+              <h3>Reading</h3>
+              <p>I recently just read Mistborn by Brandon Sanderson!</p>
+          </div>
+          </button>
+        </form>
         <a href="#">
             <div class="card">
                 <h3>Collecting Cards</h3>
@@ -95,13 +97,33 @@
                     some amateur leagues!
                 </p>
             </div>
-        </a>
-        <a href="add_hobby.html" >
-            <div class="card add-hobby-card">
-                <h3>Add Hobby</h3>
-                <p>Add a new hobby to your home page!</p>
-            </div>
-        </a>
+        </a> -->
+        <?php 
+          for($i=0;$i<count($hobbies);$i++){
+            $hobby = $hobbies[$i];
+            $hobby_name = $hobby["hobby_name"];
+            $hobby_description = $hobby["hobby_description"];
+            echo 
+            "<form action='?command=example_hobby' method='post'>
+              <button type='submit'>
+                <div class='card add-hobby-card'>
+                <h3>$hobby_name</h3>
+                <p>
+                    $hobby_description
+                </p>
+                </div>
+              </button>
+            </form>";
+          }
+        ?>
+        <form action="?command=showAddHobby" method="post">
+          <button type="submit">
+          <div class="card add-hobby-card">
+            <h3>Add Hobby</h3>
+            <p>Add a new hobby to your home page!</p>
+          </div>
+          </button>
+        </form>
       </div>
     </section>
   </main>

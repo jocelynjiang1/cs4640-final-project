@@ -20,6 +20,13 @@
     
     <form action="?command=login" class="login-form" method="post">
       <input 
+        type="text" 
+        class="email-input" 
+        name="username"
+        placeholder="Username" 
+        required
+      >
+      <input 
         type="email" 
         class="email-input" 
         name="email"
@@ -38,7 +45,7 @@
       </div>
       
       <button type="submit">Sign In</button>
-      
+      <?= $message ?>
       <a href="#" class="signup-link">Sign Up Here</a>
     </form>
   </div>
