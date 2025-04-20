@@ -21,12 +21,18 @@
   }
 
   /* nav bar styling */ 
-  
   .navbar ul {
     display: flex;
     align-items: center;
     justify-content: space-around;
     list-style: none;
+
+  }
+
+  .navbar ul li button {
+    background-color: #FFE8A1;
+    border: none;
+    font-family: 'Architects Daughter', cursive;
   }
   
   .navbar a {
