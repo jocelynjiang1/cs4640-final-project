@@ -14,6 +14,20 @@
   >
   <link rel="stylesheet" href="style/home.css">
   <link rel="stylesheet" href="style/add_view_hobby.css">
+
+  <script>
+    function validateUpdate(){
+      var hobby_name = document.getElementById("hobby-name").value;
+      if(hobby_name==""){
+        let msg = document.getElementById("message");
+        msg.innerHTML = "Hobby name is required!";
+        return false;
+      }
+    }
+    function validateDelete(){
+      
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -40,10 +54,13 @@
   <main>
     <section class="edit-hobby">
       <h2>Edit Hobby</h2>
+
+      <p id="message"></p>
       <?php if (isset($_GET["error"])) { ?>
         <p class="error"><?= htmlspecialchars($_GET["error"]) ?></p>
       <?php } ?>
-      <form action="?command=updateHobby" method="post">
+      
+      <form onsubmit="return validateUpdate();" action="" method="post">
         <input type="hidden" name="hobby_id" value="<?= htmlspecialchars($hobby_id) ?>">
         <label for="hobby-name">Hobby Name:</label>
         <input type="text" name="hobby-name" id="hobby-name" value="<?= htmlspecialchars($hobby_name) ?>">
@@ -53,7 +70,7 @@
         <br>
         <button type="submit">Update Hobby</button>
       </form>
-      <form action="?command=deleteHobby" method="post" onsubmit="return confirm('Are you sure you want to delete this hobby? This action cannot be undone.');">
+      <form onsubmit="return validateDelete();" action="?command=deleteHobby" method="post" onsubmit="return confirm('Are you sure you want to delete this hobby? This action cannot be undone.');">
         <input type="hidden" name="hobby_id" value="<?= htmlspecialchars($hobby_id) ?>">
         <button type="submit">Delete Hobby</button>
       </form>

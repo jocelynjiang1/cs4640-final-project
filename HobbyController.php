@@ -93,8 +93,9 @@ class HobbyController
       $db = new Database();
       $check_exists = $db->query("select * from hobby_users where email = $1;", $_POST["email"]);
       if ($check_exists === false || empty($check_exists)) {
-        $email_pattern = "/[A-Za-z]*@[A-Za-z]*.[A-Za-z]*/";
-        if (preg_match($email_pattern, $_POST["email"]) === 1) {
+        $email_pattern = "/[A-Za-z]+@[A-Za-z]+.[A-Za-z]+/";
+        $password_pattern = "/^[^\s]+$/"; //pwd can be any non-whitespace chars
+        if ((preg_match($email_pattern, $email)) && (preg_match($password_pattern, $password))) {
           $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
           $result = $db->query(
             "INSERT INTO hobby_users (name, email, password) VALUES ($1, $2, $3)",
@@ -109,7 +110,7 @@ class HobbyController
           header("Location: ?command=home");
           return;
         } else {
-          $message = "Please enter a valid email.";
+          $message = "Please check your email and password for correct format.";
         }
       } else { //user already in db
         $hashed_password = $check_exists[0]["password"];
@@ -122,11 +123,11 @@ class HobbyController
           header("Location: ?command=home");
           return;
         } else { //incorrect pwd
-          $message = "Your password was incorrect!";
+          $message = "Your password does not match.";
         }
       }
     } else {
-      $message = "Your email or password is missing!";
+      $message = "Your email or password is missing.";
     }
 
     $this->showWelcome($message); //if login failed (else statement executed), remain on welcome.php
@@ -153,7 +154,8 @@ class HobbyController
       header("Location: ?command=home");
       return;
     } else {
-      $message = "Please enter a name for your new hobby.";
+      $message = "In the back end. ";
+      $message = $message . "Please enter a name for your new hobby.";
     }
     $this->showAddHobby($message);
   }

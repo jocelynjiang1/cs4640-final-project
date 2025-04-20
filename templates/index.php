@@ -13,16 +13,45 @@
     href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" 
     rel="stylesheet">
   <link rel="stylesheet" href="style/styles.css">
+
+  <script>
+    function validateLogin(){ //validate input formats
+      var user = document.getElementById("username").value;
+      var email = document.getElementById("email").value;
+      var pwd = document.getElementById("password").value;
+      var msg = document.getElementById("message");
+      if(user=="" || pwd=="" || email==""){
+        msg.innerHTML = "Please fill out all fields to log in!";
+        return false;
+      }
+      const email_format = /[A-Za-z]+@[A-Za-z]+.[A-Za-z]+/;
+      const pwd_format = /^[^\s]+$/;
+      console.log(email_format);
+      console.log(pwd_format);
+      console.log(pwd);
+      console.log(!email_format.test(email));
+      console.log(!pwd_format.test(pwd));
+      if(!email_format.test(email)){
+        msg.innerHTML = "Please enter a valid email!";
+        return false;
+      }
+      if(!pwd_format.test(pwd)){
+        msg.innerHTML = "Please enter a valid password!";
+        return false;
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <h1>Hobby Tracker</h1>
     
-    <form action="?command=login" class="login-form" method="post">
+    <form onsubmit="return validateLogin();" action="?command=login" class="login-form" method="post">
       <input 
         type="text" 
         class="email-input" 
         name="username"
+        id = "username"
         placeholder="Username" 
         required
       >
@@ -30,6 +59,7 @@
         type="email" 
         class="email-input" 
         name="email"
+        id="email"
         placeholder="mail@example.com" 
         required
       >
@@ -38,11 +68,13 @@
           type="password" 
           class="password-input" 
           name="password"
+          id="password"
           placeholder="Password" 
           required
         >
       </div>
-      <?= $message ?>
+      <p id="message"><?= $message ?></p>
+      
       <button type="submit">Sign In</button>
       <a href="#" class="signup-link">Sign Up Here</a>
     </form>

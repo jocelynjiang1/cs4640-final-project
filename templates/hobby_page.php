@@ -9,6 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style/home.css">
   <link rel="stylesheet" href="style/add_view_hobby.css">
+
+  <script>
+    function validateEntry(){
+      var entry_text = document.getElementById("add-entry").value;
+      if(entry_text==""){
+        let msg = document.getElementById("message");
+        msg.innerHTML = "Please enter some text for your new entry!";
+        return false;
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -55,7 +66,7 @@
         <?php } ?>
       </section>
 
-      <form class="new-entry-form" action="?command=createHobbyEntry" method="post">
+      <form class="new-entry-form" onsubmit="return validateEntry();" action="?command=createHobbyEntry" method="post">
         <input type="hidden" name="hobby_id" value="<?= htmlspecialchars($hobby_id) ?>">
         <label class="add-entry" for="add-entry">Add a new entry:</label>
         <input type="text" class="add-entry" name="entry_text" id="add-entry">
@@ -66,7 +77,7 @@
   <a href="?command=editHobby&hobby_id=<?= htmlspecialchars($hobby_id) ?>" class="edit-button">Edit Hobby</a>
 </div>
 
-
+      <p id="message"></p>
       <?php if (isset($_GET["error"])) { ?>
         <p class="error"><?= htmlspecialchars($_GET["error"]) ?></p>
       <?php } ?>

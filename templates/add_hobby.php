@@ -14,6 +14,17 @@
   >
   <link rel="stylesheet" href="style/home.css">
   <link rel="stylesheet" href="style/add_view_hobby.css">
+
+  <script>
+    function validateHobby(){ //looked up prioritizing client handling before server; return false cancels form submission
+      var hobby_name = document.getElementById("category-name").value;
+      if (hobby_name==""){
+        let msg = document.getElementById("message");
+        msg.innerHTML = "Please enter a name for your new hobby!";
+        return false;
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -41,7 +52,7 @@
     <main>
         <section class="category">
             <h2>Add a new hobby to your profile!</h2>
-            <form action="?command=createHobby" method="post">
+            <form onsubmit="return validateHobby();" action="?command=createHobby" method="post" id="hobby-form">
                 <label for="category-name" class="category-name">New category name:</label>
                 <input type="text" id="category-name" name="hobby-name"> <br>
                 <label for="category-description" class="category-description">Category description (optional):</label>
@@ -49,7 +60,8 @@
                 <button type="submit" name="submit-category" class="submit-category">Create category!</button>
             </form>
             <br>
-            <?=$message?>
+            <p id="message"></p>
+            <?=$message?> <!-- or should it be wrapped by p with id message? -->
         </section>
         
     </main>
