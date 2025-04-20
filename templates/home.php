@@ -13,6 +13,54 @@
     rel="stylesheet"
   >
   <link rel="stylesheet" href="style/home.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(document).ready(function(){
+      $(".add-hobby-card").on("mouseenter",getQuickStats);
+      $(".add-hobby-card").on("mouseleave",restoreBaseDetails);
+    });
+
+    var base_details;
+
+    async function getQuickStats(){
+      var hobby_div = this;
+      let hobby_id = this.id;
+      var ajax = new XMLHttpRequest();
+      console.log(hobby_div);
+      ajax.open("GET","http://localhost:8080/cs4640-final-project/?command=hobby_page&hobby_id="+hobby_id+"&format=json",true);
+      ajax.responseType = "json";
+      ajax.send(null);
+
+      ajax.addEventListener("load", function(){
+        if(this.status==200){
+          console.log("it worked");
+          
+          var num_entries = this.response["entries"].length; //use returned json data
+          let p_details = hobby_div.querySelector('p[name="details"]'); //Googled how to select child element in js
+          base_details = p_details.innerHTML; //set variable for mouseleave handler
+          p_details.innerHTML+="<br> This hobby has "+num_entries+" entries!";
+
+          if(num_entries>0){
+            var raw_last_date = this.response["entries"][0]["created_at"].split(".")[0];
+            var last_date = new Date(raw_last_date);
+            var as_day = last_date.toDateString();
+            p_details.innerHTML+="<br>"+"Last entry: "+as_day;
+          }
+        }
+        else{
+          console.log("failed");
+        }
+      });
+    }
+
+    function restoreBaseDetails(){
+      console.log("base details: "+base_details);
+        var hobby_div = this;
+        let p_details = hobby_div.querySelector('p[name="details"]'); //Googled how to select child element in js
+          p_details.innerHTML= base_details;
+    }
+  
+  </script>
 </head>
 <body>
   <header>
@@ -85,9 +133,9 @@
             "<form action='?command=hobby_page' method='post'>
               <input type='hidden' name='hobby_id' value='$hobby_id'>
               <button type='submit'>
-                <div class='card add-hobby-card'>
+                <div class='card add-hobby-card' id='$hobby_id'>
                 <h3>$hobby_name</h3>
-                <p>
+                <p name='details'>
                     $hobby_description
                 </p>
                 </div>
@@ -97,7 +145,7 @@
         ?>
         <form action="?command=showAddHobby" method="post">
           <button type="submit">
-          <div class="card add-hobby-card">
+          <div class="card add-hobby-card" id="add-hobby-card">
             <h3>Add Hobby</h3>
             <p>Add a new hobby to your home page!</p>
           </div>
