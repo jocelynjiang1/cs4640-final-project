@@ -24,9 +24,6 @@
         return false;
       }
     }
-    function validateDelete(){
-      
-    }
   </script>
 </head>
 <body>
@@ -60,7 +57,7 @@
         <p class="error"><?= htmlspecialchars($_GET["error"]) ?></p>
       <?php } ?>
       
-      <form onsubmit="return validateUpdate();" action="" method="post">
+      <form onsubmit="return validateUpdate();" action="?command=updateHobby" method="post">
         <input type="hidden" name="hobby_id" value="<?= htmlspecialchars($hobby_id) ?>">
         <label for="hobby-name">Hobby Name:</label>
         <input type="text" name="hobby-name" id="hobby-name" value="<?= htmlspecialchars($hobby_name) ?>">
@@ -70,7 +67,7 @@
         <br>
         <button type="submit">Update Hobby</button>
       </form>
-      <form onsubmit="return validateDelete();" action="?command=deleteHobby" method="post" onsubmit="return confirm('Are you sure you want to delete this hobby? This action cannot be undone.');">
+      <form action="?command=deleteHobby" method="post" onsubmit="return confirm('Are you sure you want to delete this hobby? This action cannot be undone.');">
         <input type="hidden" name="hobby_id" value="<?= htmlspecialchars($hobby_id) ?>">
         <button type="submit">Delete Hobby</button>
       </form>
