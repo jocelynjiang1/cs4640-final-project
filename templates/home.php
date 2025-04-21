@@ -35,6 +35,7 @@
         if(this.status==200){
           console.log("it worked");
           
+          //"Define, instantiate, and use at least one JavaScript object"...create object to store attributes of this.response?
           var num_entries = this.response["entries"].length; //use returned json data
           let p_details = hobby_div.querySelector('p[name="details"]'); //Googled how to select child element in js
           base_details = p_details.innerHTML; //set variable for mouseleave handler
@@ -59,9 +60,9 @@
         let p_details = hobby_div.querySelector('p[name="details"]'); //Googled how to select child element in js
           p_details.innerHTML= base_details;
     }
-  
   </script>
 </head>
+
 <body>
   <header>
     <nav class="navbar">
